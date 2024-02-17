@@ -98,16 +98,17 @@ class Application:
 
     _VIEWPORT_WIDTH = 800
     _VIEWPORT_HEIGHT = 600
-
-    _MAX_FPS = 60
+    
+    ANTI_ALIASING_SAMPLE_COUNT = 5
     
     def __init__(self) -> None:
-        self._is_running = True
-
         glfw.init()
+        glfw.window_hint(glfw.SAMPLES, self.ANTI_ALIASING_SAMPLE_COUNT)
         self._window = glfw.create_window(self._VIEWPORT_WIDTH, self._VIEWPORT_HEIGHT, "Лабораторна робота № 1. ІП-14 Бабіч Денис", None, None)
         glfw.make_context_current(self._window)
+
         glEnable(GL_DEPTH_TEST)
+        glEnable(GL_MULTISAMPLE)
 
         self._start()
 
