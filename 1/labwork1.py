@@ -222,6 +222,25 @@ class Application:
 
         self._destroy()
 
+    def _apply_axonometric_projection(left: float, right: float, bottom: float, top: float, near: float, far: float) -> None:
+        projection_matrix = np.zeros((4, 4), dtype = np.float32)
+        projection_matrix[0, 0] = 2 / (right - left)
+        projection_matrix[1, 1] = 2 / (top - bottom)
+        projection_matrix[2, 2] = -2 / (far - near)
+        projection_matrix[0, 3] = -(right + left) / (right - left)
+        projection_matrix[1, 3] = -(top + bottom) / (top - bottom)
+        projection_matrix[2, 3] = -(far + near) / (far - near)
+        projection_matrix[3, 3] = 1.0
+
+        glMultMatrixf(projection_matrix)
+
+        view_matrix = np.array([[1, 0, 0, 0],
+                                [0, 1, 0, 0],
+                                [0, 0, 1, Application._CAMERA_OFFSET],
+                                [0, 0, 0, 1]], dtype = np.float32)
+        
+        glMultMatrixf(view_matrix)
+
     def _start(self) -> None:
         self._game_objects = list()
 
@@ -238,11 +257,11 @@ class Application:
                           [2, 3, 5],     # Side (BCE)
                           [3, 4, 5],     # Side (CDE)
                           [4, 1, 5] ]    # Side (DAE)
-        
+
         pyramid_mesh = Mesh(pyramid_vertices, pyramid_faces)
 
         pyramid_material = Material([1.0, 1.0, 1.0, 1.0], [0.0, 0.0, 0.0, 1.0], 5)
-        
+
         pyramid = SceneObject(pyramid_transform, pyramid_mesh, pyramid_material, pyramid_update)
 
         self._game_objects.append(pyramid)
@@ -254,8 +273,12 @@ class Application:
 
         glLoadIdentity()
 
-        gluPerspective(Application._CAMERA_FOV, Application._CAMERA_ASPECT_RATIO, Application._CAMERA_NEAR_CLIPPING_PLANE, Application._CAMERA_FAR_CLIPPING_PLANE)
-        glTranslatef(0.0, 0.0, Application._CAMERA_OFFSET)
+        #gluPerspective(Application._CAMERA_FOV, Application._CAMERA_ASPECT_RATIO, Application._CAMERA_NEAR_CLIPPING_PLANE, Application._CAMERA_FAR_CLIPPING_PLANE)
+        #glTranslatef(0.0, 0.0, Application._CAMERA_OFFSET)
+
+        #self._apply_axonometric_projection(-1.0, 1.0, -1.0, 1.0, 1.0, 10.0)
+
+        self._apply_axonometric_projection(1.0)
 
         glClearColor(0.0, 0.0, 0.0, 1.0)
 
