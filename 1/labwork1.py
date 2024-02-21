@@ -56,32 +56,26 @@ class Transform:
         glTranslatef(self.position[Transform._VECTOR3_X_INDEX], self.position[Transform._VECTOR3_Y_INDEX], self.position[Transform._VECTOR3_Z_INDEX])
 
     def apply_rotation(self) -> None:
-        THRESHOLD = 360
         PRECISION = 3
+        ANGLE_THRESHOLD = 360.0
 
-        print(self._rotation[Transform._VECTOR3_Y_INDEX])
+        glMultMatrixf(self._get_rotation_matrix_x(np.radians(np.round(self._rotation[Transform._VECTOR3_X_INDEX] % ANGLE_THRESHOLD, decimals = PRECISION))))
+        glMultMatrixf(self._get_rotation_matrix_y(np.radians(np.round(self._rotation[Transform._VECTOR3_Y_INDEX] % ANGLE_THRESHOLD, decimals = PRECISION))))
+        glMultMatrixf(self._get_rotation_matrix_z(np.radians(np.round(self._rotation[Transform._VECTOR3_Z_INDEX] % ANGLE_THRESHOLD, decimals = PRECISION))))
 
-        glRotatef(self._rotation[Transform._VECTOR3_X_INDEX], 1.0, 0.0, 0.0)
-        glRotatef(self._rotation[Transform._VECTOR3_Y_INDEX], 0.0, 1.0, 0.0)
-        glRotatef(self._rotation[Transform._VECTOR3_Z_INDEX], 0.0, 0.0, 1.0)
-
-        #glMultMatrixf(self._rotation_matrix_x(np.radians(np.round(self._rotation[Transform._VECTOR3_X_INDEX] % THRESHOLD, decimals = PRECISION))))
-        #glMultMatrixf(self._rotation_matrix_y(np.radians(np.round(self._rotation[Transform._VECTOR3_Y_INDEX] % THRESHOLD, decimals = PRECISION))))
-        #glMultMatrixf(self._rotation_matrix_z(np.radians(np.round(self._rotation[Transform._VECTOR3_Z_INDEX] % THRESHOLD, decimals = PRECISION))))
-
-    def _rotation_matrix_x(self, angle: float) -> np.array:
+    def _get_rotation_matrix_x(self, angle: float) -> np.array:
         return np.array([[1, 0, 0, 0],
                          [0, np.cos(angle), -np.sin(angle), 0],
                          [0, np.sin(angle), np.cos(angle), 0],
                          [0, 0, 0, 1]], dtype = np.float32)
 
-    def _rotation_matrix_y(self, angle: float) -> np.array:
+    def _get_rotation_matrix_y(self, angle: float) -> np.array:
         return np.array([[np.cos(angle), 0, np.sin(angle), 0],
                          [0, 1, 0, 0],
                          [-np.sin(angle), 0, np.cos(angle), 0],
                          [0, 0, 0, 1]], dtype = np.float32)
 
-    def _rotation_matrix_z(self, angle: float) -> np.array:
+    def _get_rotation_matrix_z(self, angle: float) -> np.array:
         return np.array([[np.cos(angle), -np.sin(angle), 0, 0],
                          [np.sin(angle), np.cos(angle), 0, 0],
                          [0, 0, 1, 0],
@@ -177,7 +171,7 @@ class SceneObject:
         self._transform = transform
         self._update_delegate = update_delegate
 
-    def update(self, delta_time: float) -> None:
+    def render(self) -> None:
         glPushMatrix()
         
         self._transform.apply_scale()
@@ -192,6 +186,7 @@ class SceneObject:
 
         glPopMatrix()
 
+    def update(self, delta_time: float) -> None:
         self._update_delegate(self, delta_time)
 
 class Application:
@@ -206,6 +201,8 @@ class Application:
     _CAMERA_NEAR_CLIPPING_PLANE = 0.01
     _CAMERA_FAR_CLIPPING_PLANE = 100.0
     _CAMERA_OFFSET = -5.0
+
+    _MIN_DELTA_TIME = 0.005
     
     def __init__(self) -> None:
         glfw.init()
@@ -244,14 +241,14 @@ class Application:
         
         pyramid_mesh = Mesh(pyramid_vertices, pyramid_faces)
 
-        pyramid_material = Material([0.0, 0.0, 0.0, 1.0], [1.0, 0.0, 0.0, 1.0], 5)
+        pyramid_material = Material([1.0, 1.0, 1.0, 1.0], [0.0, 0.0, 0.0, 1.0], 5)
         
         pyramid = SceneObject(pyramid_transform, pyramid_mesh, pyramid_material, pyramid_update)
 
         self._game_objects.append(pyramid)
 
     def _update(self) -> None:
-        start_time = datetime.now()
+        start_time = glfw.get_time()
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
@@ -260,9 +257,15 @@ class Application:
         gluPerspective(Application._CAMERA_FOV, Application._CAMERA_ASPECT_RATIO, Application._CAMERA_NEAR_CLIPPING_PLANE, Application._CAMERA_FAR_CLIPPING_PLANE)
         glTranslatef(0.0, 0.0, Application._CAMERA_OFFSET)
 
-        glClearColor(1.0, 1.0, 1.0, 1.0)
+        glClearColor(0.0, 0.0, 0.0, 1.0)
 
-        delta_time = (datetime.now() - start_time).total_seconds()
+        for game_object in self._game_objects:
+            game_object.render()
+
+        delta_time = (glfw.get_time() - start_time)
+
+        if delta_time < Application._MIN_DELTA_TIME:
+            delta_time = Application._MIN_DELTA_TIME
 
         for game_object in self._game_objects:
             game_object.update(delta_time)
@@ -273,31 +276,34 @@ class Application:
         glfw.terminate()
 
 def pyramid_update(scene_object: SceneObject, delta_time: float) -> None:
-    Y = 1 
-    COLOR_ALPHA_VALUE = 1.0
+    Y = 1
+    COLOR_ALPHA_CHANNEL = 1.0
+    COLOR_MAX_INTENSITY = 255
 
-    ROTATION_ANGLE = 360
+    ANGLE_FULL_CIRCLE = 360
+    ANGLE_ROTATION_SPEED = 45
+
+    timestamp = datetime.now().timestamp()
 
     previous_rotation = scene_object.transform.rotation
-    scene_object.transform.rotation = [0, previous_rotation[Y] + (ROTATION_ANGLE * delta_time), 0]
+    scene_object.transform.rotation = [0, (previous_rotation[Y] + (ANGLE_ROTATION_SPEED * delta_time)) % ANGLE_FULL_CIRCLE, 0]
 
     COLOR_BASE_SHIFT_SPEED = 1
 
-    black_white_gradient = (np.sin(datetime.now().timestamp() * COLOR_BASE_SHIFT_SPEED) + 1.0) / 2.0
-    scene_object.material.base_color = [black_white_gradient, black_white_gradient, black_white_gradient, COLOR_ALPHA_VALUE]
+    gradient_black_white = np.interp((np.sin(timestamp * COLOR_BASE_SHIFT_SPEED)), [-1, 1], [0, 1])
+    scene_object.material.base_color = [gradient_black_white, gradient_black_white, gradient_black_white, COLOR_ALPHA_CHANNEL]
 
     COLOR_OUTLINE_SHIFT_SPEED = 1
 
-    color_phase = datetime.now().timestamp() * COLOR_OUTLINE_SHIFT_SPEED
-    red_component = np.sin(color_phase) * 0.5 + 0.5
-    green_component = np.sin(color_phase + (2 * np.pi / 3)) * 0.5 + 0.5
-    blue_component = np.sin(color_phase + (4 * np.pi / 3)) * 0.5 + 0.5
+    COLOR_RED_CHANNEL_OFFSET = 0
+    COLOR_GREEN_CHANNEL_OFFSET = 2 * np.pi / 3
+    COLOR_BLUE_CHANNEL_OFFSET = 4 * np.pi / 3
 
-    new_outline_color = [red_component, green_component, blue_component, 1.0]
-    scene_object.material.outline_color = new_outline_color
+    color_red_channel = int(np.interp(np.sin((timestamp * COLOR_OUTLINE_SHIFT_SPEED) + COLOR_RED_CHANNEL_OFFSET), [-1, 1], [0, 255])) / COLOR_MAX_INTENSITY
+    color_green_channel = int(np.interp(np.sin((timestamp * COLOR_OUTLINE_SHIFT_SPEED) + COLOR_GREEN_CHANNEL_OFFSET), [-1, 1], [0, 255])) / COLOR_MAX_INTENSITY
+    color_blue_channel = int(np.interp(np.sin((timestamp * COLOR_OUTLINE_SHIFT_SPEED) + COLOR_BLUE_CHANNEL_OFFSET), [-1, 1], [0, 255])) / COLOR_MAX_INTENSITY
 
-    #print(scene_object.transform.rotation)
-
+    scene_object.material.outline_color = [color_red_channel, color_green_channel, color_blue_channel, COLOR_ALPHA_CHANNEL]
 
 if __name__ == "__main__":
     instance = Application()
