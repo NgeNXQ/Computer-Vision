@@ -184,6 +184,8 @@ class SceneObject:
         self._material.apply_outline_color()
         self._mesh.draw_outline()
 
+        glFlush()
+
         glPopMatrix()
 
     def update(self, delta_time: float) -> None:
@@ -222,24 +224,29 @@ class Application:
 
         self._destroy()
 
-    def _apply_axonometric_projection(left: float, right: float, bottom: float, top: float, near: float, far: float) -> None:
-        projection_matrix = np.zeros((4, 4), dtype = np.float32)
-        projection_matrix[0, 0] = 2 / (right - left)
-        projection_matrix[1, 1] = 2 / (top - bottom)
-        projection_matrix[2, 2] = -2 / (far - near)
-        projection_matrix[0, 3] = -(right + left) / (right - left)
-        projection_matrix[1, 3] = -(top + bottom) / (top - bottom)
-        projection_matrix[2, 3] = -(far + near) / (far - near)
-        projection_matrix[3, 3] = 1.0
+    def _apply_isometric_projection(self) -> None:
+        ANGLE_ISOMETRIC_X = 45.0
+        ANGLE_ISOMETRIC_Y = 45.0
 
-        glMultMatrixf(projection_matrix)
+        glLoadIdentity()
 
-        view_matrix = np.array([[1, 0, 0, 0],
-                                [0, 1, 0, 0],
-                                [0, 0, 1, Application._CAMERA_OFFSET],
-                                [0, 0, 0, 1]], dtype = np.float32)
-        
-        glMultMatrixf(view_matrix)
+        glMatrixMode(GL_PROJECTION)
+
+        angle_x = np.radians(ANGLE_ISOMETRIC_X)
+        angle_y = np.radians(ANGLE_ISOMETRIC_Y)
+
+        rotation_matrix_x = np.array([ [1, 0, 0, 0],
+                                       [0, np.cos(angle_x), -np.sin(angle_x), 0],
+                                       [0, np.sin(angle_x), np.cos(angle_x), 0],
+                                       [0, 0, 0, 1] ], dtype = np.float32)
+
+        rotation_matrix_y = np.array([ [np.cos(angle_y), 0, np.sin(angle_y), 0],
+                                       [0, 1, 0, 0],
+                                       [-np.sin(angle_y), 0, np.cos(angle_y), 0],
+                                       [0, 0, 0, 1] ], dtype = np.float32)
+
+        glMultMatrixf(rotation_matrix_x)
+        glMultMatrixf(rotation_matrix_y)
 
     def _start(self) -> None:
         self._game_objects = list()
@@ -271,14 +278,24 @@ class Application:
 
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
-        glLoadIdentity()
+        #Pespective projection
+
+        #glLoadIdentity()
+
+        #glMatrixMode(GL_MODELVIEW)
 
         #gluPerspective(Application._CAMERA_FOV, Application._CAMERA_ASPECT_RATIO, Application._CAMERA_NEAR_CLIPPING_PLANE, Application._CAMERA_FAR_CLIPPING_PLANE)
-        #glTranslatef(0.0, 0.0, Application._CAMERA_OFFSET)
+        #glTranslate(0.0, 0.0, Application._CAMERA_OFFSET)
 
-        #self._apply_axonometric_projection(-1.0, 1.0, -1.0, 1.0, 1.0, 10.0)
+        #Isometric projection
 
-        self._apply_axonometric_projection(1.0)
+        self._apply_isometric_projection()
+        glTranslate(0.6, -1.25, 0.6)
+
+        #glLoadIdentity()
+        #glTranslate(0.0, 0.25, 1.35)
+        #glRotatef(-45.0, 1.0, 0.0, 0.0)
+        #glRotatef(-45.0, 0.0, 1.0, 0.0)
 
         glClearColor(0.0, 0.0, 0.0, 1.0)
 
