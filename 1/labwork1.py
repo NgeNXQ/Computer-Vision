@@ -345,5 +345,8 @@ def pyramid_update(scene_object: SceneObject, delta_time: float) -> None:
 
     scene_object.material.outline_color = [color_red_channel, color_green_channel, color_blue_channel, COLOR_ALPHA_CHANNEL]
 
-if __name__ == "__main__":
+def main() -> None:
     instance = Application()
+
+if __name__ == "__main__":
+    main()
