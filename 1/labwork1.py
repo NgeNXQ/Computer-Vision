@@ -188,9 +188,10 @@ class Application:
     _ANTI_ALIASING_SAMPLE_COUNT = 5
 
     _ISOMETRIC_PROJECTION_SCALER = 0.7
-    _ISOMETRIC_PROJECTION_ANGLE = -45.0
     _ISOMETRIC_PROJECTION_VIEWPORT_SCALE = 3.0
-    _ISOMETRIC_PROJECTION_FORESHORTENING = 35.264
+
+    _ISOMETRIC_PROJECTION_ANGLE = np.radians(-45.0)
+    _ISOMETRIC_PROJECTION_FORESHORTENING = np.radians(35.264)
 
     _MIN_DELTA_TIME = 0.005
     
@@ -239,28 +240,20 @@ class Application:
                         0, 0, -2.0 / (far - near), -(far + near) / (far - near),
                         0, 0, 0, 1] )
 
-
-
         glMatrixMode(GL_MODELVIEW)
 
         glPushMatrix()
         glLoadIdentity()
 
-        fore_shortening_angle = np.radians(self._ISOMETRIC_PROJECTION_FORESHORTENING)
-        projection_angle = np.radians(self._ISOMETRIC_PROJECTION_ANGLE)
-
-        glMultMatrixf([[1, 0, 0, 0],
-                                [0, np.cos(fore_shortening_angle), -np.sin(fore_shortening_angle), 0],
-                                [0, np.sin(fore_shortening_angle), np.cos(fore_shortening_angle), 0],
+        glMultTransposeMatrixf([[1, 0, 0, 0],
+                                [0, np.cos(self._ISOMETRIC_PROJECTION_FORESHORTENING), -np.sin(self._ISOMETRIC_PROJECTION_FORESHORTENING), 0],
+                                [0, np.sin(self._ISOMETRIC_PROJECTION_FORESHORTENING), np.cos(self._ISOMETRIC_PROJECTION_FORESHORTENING), 0],
                                 [0, 0, 0, 1] ])
         
-        glMultMatrixf([[np.cos(projection_angle), 0, np.sin(projection_angle), 0],
+        glMultTransposeMatrixf([[np.cos(self._ISOMETRIC_PROJECTION_ANGLE), 0, np.sin(self._ISOMETRIC_PROJECTION_ANGLE), 0],
                                 [0, 1, 0, 0],
-                                [-np.sin(projection_angle), 0, np.cos(projection_angle), 0],
+                                [-np.sin(self._ISOMETRIC_PROJECTION_ANGLE), 0, np.cos(self._ISOMETRIC_PROJECTION_ANGLE), 0],
                                 [0, 0, 0, 1]])
-
-        glRotatef(self._ISOMETRIC_PROJECTION_FORESHORTENING, 1.0, 0.0, 0.0)
-        glRotatef(self._ISOMETRIC_PROJECTION_ANGLE, 0.0, 1.0, 0.0)
 
     def _undo_isometric_projection(self) -> None:
         glMatrixMode(GL_MODELVIEW)
