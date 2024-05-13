@@ -1,0 +1,78 @@
+<mxfile host="app.diagrams.net" modified="2024-05-13T20:17:40.087Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="1lCJZja9d_0HGLBNq1kI" version="24.4.0" type="device">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="2077" dy="676" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="doYjt0I-bv-tzujPuIN1-162" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Початок&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-780" y="40" width="142" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-709.09" y="126" as="targetPoint" />
+            <mxPoint x="-709.09" y="80" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-9" value="Конвертація зображення у градації сірого" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-768.99" y="126" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-705.07" y="338" as="targetPoint" />
+            <mxPoint x="-705.07" y="292" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-17" value="&lt;font style=&quot;font-size: 12px;&quot;&gt;Чи є об&#39;єкти?&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-764.97" y="338" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VP7ybjolI4morJCBYN9p-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-705" y="310" as="targetPoint" />
+            <mxPoint x="-533.8888888888889" y="338" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="-534" y="310" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-30" value="Відображення об&#39;єкту" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-598.94" y="338" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-38" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Кінець&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-775.97" y="445" width="142" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="R7CpFCyDCTwJK-1Gj5H0-0" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-709.09" y="232" as="targetPoint" />
+            <mxPoint x="-709.09" y="186" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="R7CpFCyDCTwJK-1Gj5H0-1" value="&lt;font style=&quot;font-size: 11px;&quot;&gt;Знаходження заданого об&#39;єкту за допомогою класифікатора&lt;/font&gt;" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-768.99" y="232" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="VP7ybjolI4morJCBYN9p-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" target="WnF827PyI-70W-nlXefg-30">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-604.97" y="367.9200000000001" as="targetPoint" />
+            <mxPoint x="-644.97" y="367.9200000000001" as="sourcePoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VP7ybjolI4morJCBYN9p-2" value="Так" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VP7ybjolI4morJCBYN9p-1">
+          <mxGeometry x="-0.0388" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VP7ybjolI4morJCBYN9p-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-705.1400000000001" y="444" as="targetPoint" />
+            <mxPoint x="-705.1400000000001" y="398" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="VP7ybjolI4morJCBYN9p-4" value="Ні" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="VP7ybjolI4morJCBYN9p-3">
+          <mxGeometry x="-0.2" y="-2" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

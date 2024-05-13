@@ -1,0 +1,141 @@
+<mxfile host="app.diagrams.net" modified="2024-05-13T16:45:34.827Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36" etag="O2zkskxba2OTPcpWNbiv" version="24.4.0" type="device">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel dx="2665" dy="994" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="doYjt0I-bv-tzujPuIN1-176" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="doYjt0I-bv-tzujPuIN1-162" target="5P4AQtrJ6tJbXIEikHf2-35" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-410.06" y="83" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="doYjt0I-bv-tzujPuIN1-162" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Початок&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-481.06" width="142" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="5P4AQtrJ6tJbXIEikHf2-35" value="Конвертація у зображення градацій сірого" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-470.06" y="85.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-0" value="Застосування вирівнювання гістограм" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-470.06" y="191" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-410.16" y="191.5" as="targetPoint" />
+            <mxPoint x="-410.16" y="145.5" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-410.16" y="297" as="targetPoint" />
+            <mxPoint x="-410.16" y="251" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-5" value="Додавання Гаусівського розмиття" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-470.05" y="299" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-8" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-410.15000000000003" y="405" as="targetPoint" />
+            <mxPoint x="-410.15000000000003" y="359" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-9" value="Виконання морфологічних операцій" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-470.05" y="405" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-11" value="Виділення контурів" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-470.05" y="511.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-12" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-410.15000000000003" y="511" as="targetPoint" />
+            <mxPoint x="-410.15000000000003" y="465" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-13" value="Виділення та застосування регіону інтересу" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-470.05" y="618" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-410.15000000000003" y="617.5" as="targetPoint" />
+            <mxPoint x="-410.15000000000003" y="571.5" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="WnF827PyI-70W-nlXefg-17" target="WnF827PyI-70W-nlXefg-36" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-504.05" y="755" />
+              <mxPoint x="-504.05" y="1075" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-47" value="Ні" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="WnF827PyI-70W-nlXefg-46" vertex="1" connectable="0">
+          <mxGeometry x="-0.914" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-17" value="&lt;font style=&quot;font-size: 10px;&quot;&gt;Контури лишилися?&lt;/font&gt;" style="rhombus;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-470.05" y="725" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-41" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" source="WnF827PyI-70W-nlXefg-22" target="WnF827PyI-70W-nlXefg-17" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="-324.05" y="861" />
+              <mxPoint x="-324.05" y="755" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-44" value="Ні" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="WnF827PyI-70W-nlXefg-41" vertex="1" connectable="0">
+          <mxGeometry x="-0.8405" y="-1" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-22" value="&lt;span style=&quot;font-size: 10px;&quot;&gt;Контур підходить?&lt;/span&gt;" style="rhombus;whiteSpace=wrap;html=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-470.05" y="831" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-410.19" y="724" as="targetPoint" />
+            <mxPoint x="-410.19" y="678" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-410.19" y="831" as="targetPoint" />
+            <mxPoint x="-410.19" y="785" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-45" value="Так" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="WnF827PyI-70W-nlXefg-26" vertex="1" connectable="0">
+          <mxGeometry x="-0.2493" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-410.21999999999997" y="937" as="targetPoint" />
+            <mxPoint x="-410.21999999999997" y="891" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-29" value="Так" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" parent="WnF827PyI-70W-nlXefg-28" vertex="1" connectable="0">
+          <mxGeometry x="-0.2899" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-30" value="Додавання контуру до списку" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-470.05" y="938" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-36" value="Відобоаження отриманих контурів прямокутнкиами" style="shape=process;whiteSpace=wrap;html=1;backgroundOutline=1;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-470.05" y="1044.5" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-38" value="&lt;font style=&quot;font-size: 14px;&quot;&gt;Кінець&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=50;" parent="WIyWlLk6GJQsqaUBKTNV-1" vertex="1">
+          <mxGeometry x="-481.05" y="1151" width="142" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="WnF827PyI-70W-nlXefg-39" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="WIyWlLk6GJQsqaUBKTNV-1" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="-410.2200000000001" y="1150.5" as="targetPoint" />
+            <mxPoint x="-410.2200000000001" y="1104.5" as="sourcePoint" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
