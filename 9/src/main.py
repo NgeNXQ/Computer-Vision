@@ -1,5 +1,5 @@
 from ngen.engine import Loader, Application, Preferences
-from ngen.api import CameraPerspective, LightDirectional, LightPoint, LightSource, Scene, Entity, Transform
+from ngen.api import CameraPerspective, LightDirectional, LightSource, Scene, Entity, Transform
 
 INITIAL_POSITION_OFFSET = 20.0
 
@@ -93,7 +93,6 @@ def main() -> None:
 
     Preferences.set_window_title("ІП-14 Бабіч Денис. Лабораторна робота № 9")
 
-    point_light = LightPoint(Transform([0, 0, 0], [0, 0, 0], [1, 1, 1]), LightSource.LIGHT1, [1.0, 0.0, 0.0], 0.5, 1.0, 0.1)
     directional_light = LightDirectional(Transform([0, 0, 0], [0, 0, 0], [1, 1, 1]), LightSource.LIGHT0, [1.0, 1.0, 1.0])
 
     camera = CameraPerspective(Transform([0.0, 0.0, -10.0], [0, 0, 0], [1, 1, 1]), 100.0, 0.01, 100.0, None)
@@ -105,7 +104,7 @@ def main() -> None:
     car5 = Entity(Transform([INITIAL_POSITION_OFFSET, -5.5, 0], [0, 90, 0], [1.0, 1.0, 1.0]), Loader.load_mesh("9/assets/car4/car4_taxi.obj"), Loader.load_texture("9/assets/car4/car4_taxi.png"), None, callback_car5_update_movement)
     car6 = Entity(Transform([-INITIAL_POSITION_OFFSET, -9.5, 0], [0, 90, 0], [1.0, 1.0, 1.0]), Loader.load_mesh("9/assets/car4/car4_police.obj"), Loader.load_texture("9/assets/car4/car4_police.png"), None, callback_car6_update_movement)
 
-    scene = Scene([0.0, 0.694, 0.251, 1.0], camera, directional_light, point_light, car1, car2, car3, car4, car5, car6)
+    scene = Scene([0.0, 0.694, 0.251, 1.0], camera, directional_light, car1, car2, car3, car4, car5, car6)
 
     application.load_scene(scene)
 
